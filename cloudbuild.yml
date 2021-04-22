@@ -1,22 +1,18 @@
 steps:
   - name: maven:3-jdk-8
     entrypoint: mvn
-    dir: 'server'
     args: ["test"]
 
   - name: maven:3-jdk-8
     entrypoint: mvn
-    dir: 'server'
     args: ["clean", "install", "-Dmaven.test.skip=true"]
 
   - name: docker
-    dir: 'server'
     args: ["build", "-t", "gcr.io/springboot-gcp-ci/hello", "."]
 
   - name: "gcr.io/cloud-builders/docker"
     args: ["push", "gcr.io/springboot-gcp-ci/hello"]
 
   - name: 'gcr.io/cloud-builders/gcloud'
-    dir: 'server/src/main/appengine'
     args: ['app', 'deploy', "--image-url=gcr.io/springboot-gcp-ci/hello"]
     timeout: "30m0s"
