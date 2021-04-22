@@ -9,7 +9,7 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>br.com.lepsistemas</groupId>
-	<artifactId>gcp</artifactId>
+	<artifactId>hello-gcp</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>gcp</name>
 	<description>Spring Boot and GCP with CI</description>
